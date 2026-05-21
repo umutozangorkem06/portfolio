@@ -12,9 +12,9 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
-    "@lucide/astro": "^0.544.0",
+    "@lucide/astro": "^1.16.0",
     "@tailwindcss/vite": "^4.1.7",
-    "astro": "^5.7.10",
+    "astro": "^6.3.6",
     "tailwindcss": "^4.1.7"
   }
 }
