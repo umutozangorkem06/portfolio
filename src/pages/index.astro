@@ -1,0 +1,148 @@
+---
+import Base from "../layouts/Base.astro";
+import { projects } from "../data/projects";
+
+const ordered = [...projects].sort(
+  (a, b) => Number(b.featured) - Number(a.featured)
+);
+
+const year = new Date().getFullYear();
+---
+
+<Base>
+  <main class="mx-auto max-w-2xl px-6 py-20 sm:py-28">
+    <header class="flex items-start gap-5 sm:gap-6">
+      <img
+        src="/avatar.jpg"
+        alt="Portrait of Umut Ozan Gorkem"
+        width="72"
+        height="72"
+        loading="eager"
+        decoding="async"
+        class="h-16 w-16 shrink-0 rounded-full object-cover sm:h-[72px] sm:w-[72px]"
+        onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'flex h-16 w-16 sm:h-[72px] sm:w-[72px] shrink-0 items-center justify-center rounded-full bg-[color:var(--color-rule)] text-xl font-semibold text-[color:var(--color-text-muted)]',textContent:'U'}));"
+      />
+      <div class="flex flex-col gap-1">
+        <h1 class="text-2xl font-semibold tracking-tight sm:text-[28px]">
+          Umut Ozan Gorkem
+        </h1>
+        <p class="text-[15px] text-[color:var(--color-text-muted)]">
+          Cardiff, UK · Computer Science at the University of South Wales
+        </p>
+      </div>
+    </header>
+
+    <section class="mt-10 space-y-5 text-[16px] leading-7 text-[color:var(--color-text-muted)]">
+      <p>
+        I&rsquo;m a Computer Science student with a foundation in electrical
+        engineering, working across the full stack &mdash; from AI-powered
+        SaaS to quantum circuits and autonomous robotics.
+      </p>
+      <p>
+        Right now I&rsquo;m building
+        <a class="prose-link" href="#meetingbrief">MeetingBrief</a>, an
+        AI meeting-briefing product;
+        <a class="prose-link" href="#hychef">HyChef</a>, a three-tier
+        food-safety platform for UK restaurants; and
+        <a class="prose-link" href="#anidate">AniDate</a>, an anime-themed
+        matching app. I lead a chess-playing robotic arm in our university
+        robotics lab, write real-time telemetry for the Formula Student race
+        team, and explore quantum algorithms with Qiskit.
+      </p>
+      <p>
+        Mostly I write TypeScript, Python, C++, Kotlin, and PHP. I&rsquo;m
+        comfortable in Next.js, React Native / Expo, Laravel, Jetpack
+        Compose, and Unity. Tools: Git, Docker, Supabase, Firebase, Stripe,
+        MySQL.
+      </p>
+      <p>
+        Outside code I co-host
+        <a
+          class="prose-link"
+          href="https://open.spotify.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          >The Unthinkers</a
+        >, a philosophy podcast on existentialism and the philosophy of
+        mind, and I play guitar, harmonica, and bağlama.
+      </p>
+    </section>
+
+    <section class="mt-14">
+      <h2
+        class="text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-faint)]"
+      >
+        Projects
+      </h2>
+      <ul class="mt-5 divide-y divide-[color:var(--color-rule)]">
+        {
+          ordered.map((p) => (
+            <li id={p.id} class="py-4">
+              <div class="flex flex-col gap-1">
+                <div class="flex items-baseline justify-between gap-4">
+                  <h3 class="text-[15px] font-medium text-[color:var(--color-text)]">
+                    {p.title}
+                  </h3>
+                  {p.links.length > 0 && (
+                    <div class="flex shrink-0 gap-3 text-[13px]">
+                      {p.links.map((link) => (
+                        <a
+                          class="prose-link"
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {link.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <p class="text-[14px] leading-6 text-[color:var(--color-text-muted)]">
+                  {p.summary}
+                </p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-14">
+      <h2
+        class="text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-faint)]"
+      >
+        Elsewhere
+      </h2>
+      <ul class="mt-5 space-y-2 text-[15px]">
+        <li>
+          <a
+            class="prose-link"
+            href="https://github.com/umutozangorkem06"
+            target="_blank"
+            rel="noopener noreferrer">GitHub</a
+          >
+        </li>
+        <li>
+          <a
+            class="prose-link"
+            href="https://www.linkedin.com/in/umutozangorkem/"
+            target="_blank"
+            rel="noopener noreferrer">LinkedIn</a
+          >
+        </li>
+        <li>
+          <a class="prose-link" href="mailto:umutozangorkemcs@gmail.com"
+            >umutozangorkemcs@gmail.com</a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <footer
+      class="mt-20 border-t border-[color:var(--color-rule)] pt-6 text-[13px] text-[color:var(--color-text-faint)]"
+    >
+      &copy; {year} Umut Ozan Gorkem
+    </footer>
+  </main>
+</Base>
