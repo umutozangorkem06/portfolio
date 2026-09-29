@@ -14,6 +14,15 @@ export type Project = {
 
 export const projects: readonly Project[] = [
   {
+    id: "3d-reconstruction",
+    title: "3D Reconstruction on a Budget",
+    featured: true,
+    summary:
+      "Final-year project (Oct 2026 – May 2027). Benchmarking 3D Gaussian Splatting against the feed-forward VGGT model on self-captured scenes, measuring reconstruction quality, latency and memory across three hardware tiers: cloud GPU, a 4 GB laptop GPU and CPU. Evaluates one low-cost optimisation (splat pruning, quantisation or input downscaling) on the most constrained tier, delivered with a reproducible evaluation harness.",
+    stack: ["Python", "PyTorch", "nerfstudio", "gsplat", "VGGT"],
+    links: [],
+  },
+  {
     id: "meetingbrief",
     title: "MeetingBrief",
     featured: true,
