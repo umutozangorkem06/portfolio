@@ -44,13 +44,18 @@ export const projects: readonly Project[] = [
     links: [],
   },
   {
-    id: "anidate",
-    title: "AniDate",
+    id: "nagomi",
+    title: "Nagomi",
     featured: true,
     summary:
-      "Anime-themed matching app. Tinder-style card swiping, an anime catalogue powered by the Jikan API, and a quiz bank that drives matches.",
+      "Anime-themed matching app, live on Google Play. Tinder-style card swiping, an anime catalogue powered by the Jikan API, and a quiz bank that drives matches.",
     stack: ["React Native", "Expo", "TypeScript", "Firebase / Firestore", "NativeWind", "Zustand"],
-    links: [],
+    links: [
+      {
+        label: "Google Play",
+        url: "https://play.google.com/store/apps/details?id=com.anidate.app",
+      },
+    ],
   },
   {
     id: "ironpilgrim",
