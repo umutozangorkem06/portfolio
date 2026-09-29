@@ -9,30 +9,59 @@ const ordered = [...projects].sort(
   (a, b) => Number(b.featured) - Number(a.featured)
 );
 
-const experience = [
+type Experience = {
+  role: string;
+  org: string;
+  period?: string;
+  points: readonly string[];
+};
+
+const experience: readonly Experience[] = [
   {
-    role: "Project Lead — Chess-Playing Robotic Arm",
-    org: "University robotics lab",
-    summary:
-      "Leading the team building a robotic arm that plays chess on a physical board.",
+    role: "IT Support Professional",
+    org: "University of South Wales · Cardiff, UK",
+    period: "Sept 2025 – Present",
+    points: [
+      "Resolve software, network and hardware incidents for staff and students across campus as first point of contact.",
+      "Document recurring fixes in the team knowledge base so common issues are closed faster.",
+    ],
   },
   {
-    role: "Telemetry Software Developer",
-    org: "Formula Student race team",
-    summary:
-      "Writing real-time telemetry software for the team's race car.",
+    role: "Summer Intern",
+    org: "Mercedes-Benz Türk IT, Global ECOC Team · Aksaray, Turkey",
+    period: "June 2026 – Sept 2026",
+    points: [
+      "Wrote BDD test scenarios in Cucumber/Gherkin with Java step definitions for the team’s automation suite.",
+      "Refactored existing scenarios to remove duplicated steps and make failures easier to trace.",
+    ],
+  },
+  {
+    role: "Student Lab Lead",
+    org: "USW Robotics Lab",
+    points: [
+      "Led the student team building a chess-playing robotic arm, integrating chess-engine move selection with the arm’s motion control in Python.",
+    ],
+  },
+  {
+    role: "Telemetry Developer",
+    org: "Formula Student USW",
+    points: ["Wrote C++ software to read and plot live sensor data from the team’s race car."],
   },
 ];
 
 const skills = [
-  { group: "Languages", items: ["TypeScript", "Python", "C++", "Kotlin", "PHP", "C#"] },
+  { group: "Languages", items: ["TypeScript", "Python", "Java", "C++", "Kotlin", "PHP", "C#", "SQL"] },
   {
     group: "Frameworks",
     items: ["Next.js", "React", "React Native / Expo", "Laravel", "Jetpack Compose", "Unity"],
   },
   {
     group: "Tools & Platforms",
-    items: ["Git", "Docker", "Supabase", "Firebase", "Stripe", "MySQL", "Qiskit"],
+    items: ["Git", "Linux", "Docker", "Supabase", "Firebase", "Stripe", "MySQL", "Qiskit"],
+  },
+  {
+    group: "Testing",
+    items: ["Cucumber", "Gherkin", "BDD test automation"],
   },
 ];
 
@@ -113,9 +142,16 @@ const year = new Date().getFullYear();
         {
           experience.map((e) => (
             <li class="flex flex-col gap-1">
-              <h3 class="text-[15px] font-medium text-[color:var(--color-text)]">{e.role}</h3>
+              <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+                <h3 class="text-[15px] font-medium text-[color:var(--color-text)]">{e.role}</h3>
+                {e.period && (
+                  <p class="text-[13px] tabular-nums text-[color:var(--color-text-faint)]">{e.period}</p>
+                )}
+              </div>
               <p class="text-[13px] text-[color:var(--color-text-faint)]">{e.org}</p>
-              <p class="text-[14px] leading-6 text-[color:var(--color-text-muted)]">{e.summary}</p>
+              <ul class="mt-1 list-disc space-y-1 pl-4 text-[14px] leading-6 text-[color:var(--color-text-muted)] marker:text-[color:var(--color-text-faint)]">
+                {e.points.map((point) => <li>{point}</li>)}
+              </ul>
             </li>
           ))
         }
