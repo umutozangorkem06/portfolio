@@ -6,6 +6,42 @@ const ordered = [...projects].sort(
   (a, b) => Number(b.featured) - Number(a.featured)
 );
 
+const experience = [
+  {
+    role: "Project Lead — Chess-Playing Robotic Arm",
+    org: "University robotics lab",
+    summary:
+      "Leading the team building a robotic arm that plays chess on a physical board.",
+  },
+  {
+    role: "Telemetry Software Developer",
+    org: "Formula Student race team",
+    summary:
+      "Writing real-time telemetry software for the team's race car.",
+  },
+];
+
+const skills = [
+  { group: "Languages", items: ["TypeScript", "Python", "C++", "Kotlin", "PHP", "C#"] },
+  {
+    group: "Frameworks",
+    items: ["Next.js", "React", "React Native / Expo", "Laravel", "Jetpack Compose", "Unity"],
+  },
+  {
+    group: "Tools & Platforms",
+    items: ["Git", "Docker", "Supabase", "Firebase", "Stripe", "MySQL", "Qiskit"],
+  },
+];
+
+const contact = {
+  email: "umutozangorkemcs@gmail.com",
+  github: "https://github.com/umutozangorkem06",
+  linkedin: "https://www.linkedin.com/in/umutozangorkem/",
+};
+
+const heading =
+  "text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-faint)]";
+
 const year = new Date().getFullYear();
 ---
 
@@ -25,54 +61,68 @@ const year = new Date().getFullYear();
         <h1 class="text-2xl font-semibold tracking-tight sm:text-[28px]">
           Umut Ozan Gorkem
         </h1>
-        <p class="text-[15px] text-[color:var(--color-text-muted)]">
+        <p class="text-[15px] font-medium text-[color:var(--color-accent)]">
+          Software Developer
+        </p>
+        <p class="text-[14px] text-[color:var(--color-text-muted)]">
           Cardiff, UK · Computer Science at the University of South Wales
         </p>
+        <nav aria-label="Contact" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
+          <a class="prose-link" href={`mailto:${contact.email}`}>Email</a>
+          <a class="prose-link" href={contact.github} target="_blank" rel="noopener noreferrer"
+            >GitHub</a
+          >
+          <a class="prose-link" href={contact.linkedin} target="_blank" rel="noopener noreferrer"
+            >LinkedIn</a
+          >
+        </nav>
       </div>
     </header>
 
-    <section class="mt-10 space-y-5 text-[16px] leading-7 text-[color:var(--color-text-muted)]">
+    <p
+      class="mt-8 inline-flex items-center gap-2 rounded-full border border-[color:var(--color-rule)] px-3 py-1 text-[13px] text-[color:var(--color-text-muted)]"
+    >
+      <span class="h-1.5 w-1.5 rounded-full bg-[color:var(--color-accent)]" aria-hidden="true"
+      ></span>
+      Open to software engineering roles
+    </p>
+
+    <section aria-label="About" class="mt-8 space-y-5 text-[16px] leading-7 text-[color:var(--color-text-muted)]">
       <p>
-        I&rsquo;m a Computer Science student with a foundation in electrical
-        engineering, working across the full stack &mdash; from AI-powered
-        SaaS to quantum circuits and autonomous robotics.
+        I&rsquo;m a software developer and Computer Science student with a
+        foundation in electrical engineering. I build products end to end
+        &mdash; web backends and dashboards, native and cross-platform mobile
+        apps, and games &mdash; and I&rsquo;m drawn to work where software
+        meets hardware, from robotics to quantum computing.
       </p>
       <p>
         Right now I&rsquo;m building
-        <a class="prose-link" href="#meetingbrief">MeetingBrief</a>, an
-        AI meeting-briefing product;
-        <a class="prose-link" href="#hychef">HyChef</a>, a three-tier
-        food-safety platform for UK restaurants; and
-        <a class="prose-link" href="#anidate">AniDate</a>, an anime-themed
-        matching app. I lead a chess-playing robotic arm in our university
-        robotics lab, write real-time telemetry for the Formula Student race
-        team, and explore quantum algorithms with Qiskit.
-      </p>
-      <p>
-        Mostly I write TypeScript, Python, C++, Kotlin, and PHP. I&rsquo;m
-        comfortable in Next.js, React Native / Expo, Laravel, Jetpack
-        Compose, and Unity. Tools: Git, Docker, Supabase, Firebase, Stripe,
-        MySQL.
-      </p>
-      <p>
-        Outside code I co-host
-        <a
-          class="prose-link"
-          href="https://open.spotify.com/show/7F2XVPOYK9E8hoZJtzPhzn"
-          target="_blank"
-          rel="noopener noreferrer"
-          >The Unthinkers</a
-        >, a philosophy podcast on existentialism and the philosophy of
-        mind, and I play guitar, harmonica, and bağlama.
+        <a class="prose-link" href="#meetingbrief">MeetingBrief</a>, an AI
+        meeting-briefing SaaS;
+        <a class="prose-link" href="#hychef">HyChef</a>, a food-safety
+        platform for UK restaurants; and
+        <a class="prose-link" href="#ironpilgrim">Iron Pilgrim</a>, a
+        war-train roguelike with a page on Steam.
       </p>
     </section>
 
-    <section class="mt-14">
-      <h2
-        class="text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-faint)]"
-      >
-        Projects
-      </h2>
+    <section class="mt-14" aria-labelledby="experience">
+      <h2 id="experience" class={heading}>Experience</h2>
+      <ul class="mt-5 space-y-5">
+        {
+          experience.map((e) => (
+            <li class="flex flex-col gap-1">
+              <h3 class="text-[15px] font-medium text-[color:var(--color-text)]">{e.role}</h3>
+              <p class="text-[13px] text-[color:var(--color-text-faint)]">{e.org}</p>
+              <p class="text-[14px] leading-6 text-[color:var(--color-text-muted)]">{e.summary}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-14" aria-labelledby="projects">
+      <h2 id="projects" class={heading}>Projects</h2>
       <ul class="mt-5 divide-y divide-[color:var(--color-rule)]">
         {
           ordered.map((p) => (
@@ -114,32 +164,61 @@ const year = new Date().getFullYear();
       </ul>
     </section>
 
-    <section class="mt-14">
-      <h2
-        class="text-[13px] font-semibold uppercase tracking-[0.14em] text-[color:var(--color-text-faint)]"
-      >
-        Elsewhere
-      </h2>
-      <ul class="mt-5 space-y-2 text-[15px]">
+    <section class="mt-14" aria-labelledby="skills">
+      <h2 id="skills" class={heading}>Skills</h2>
+      <dl class="mt-5 space-y-3 text-[14px] leading-6">
+        {
+          skills.map((s) => (
+            <div class="grid gap-1 sm:grid-cols-[150px_1fr] sm:gap-4">
+              <dt class="text-[color:var(--color-text)]">{s.group}</dt>
+              <dd class="text-[color:var(--color-text-muted)]">{s.items.join(" · ")}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <section class="mt-14" aria-labelledby="education">
+      <h2 id="education" class={heading}>Education</h2>
+      <div class="mt-5 flex flex-col gap-1">
+        <h3 class="text-[15px] font-medium text-[color:var(--color-text)]">Computer Science</h3>
+        <p class="text-[14px] leading-6 text-[color:var(--color-text-muted)]">
+          University of South Wales · Cardiff, UK
+        </p>
+      </div>
+    </section>
+
+    <section class="mt-14" aria-labelledby="outside-code">
+      <h2 id="outside-code" class={heading}>Outside code</h2>
+      <p class="mt-5 text-[14px] leading-6 text-[color:var(--color-text-muted)]">
+        I co-host
+        <a
+          class="prose-link"
+          href="https://open.spotify.com/show/7F2XVPOYK9E8hoZJtzPhzn"
+          target="_blank"
+          rel="noopener noreferrer"
+          >The Unthinkers</a
+        >, a philosophy podcast on existentialism and the philosophy of mind,
+        and I play guitar, harmonica, and bağlama.
+      </p>
+    </section>
+
+    <section class="mt-14" aria-labelledby="contact">
+      <h2 id="contact" class={heading}>Contact</h2>
+      <p class="mt-5 text-[16px] leading-7 text-[color:var(--color-text-muted)]">
+        I&rsquo;m open to software engineering roles and interesting projects.
+        The fastest way to reach me is
+        <a class="prose-link" href={`mailto:${contact.email}`}>{contact.email}</a>.
+      </p>
+      <ul class="mt-4 flex gap-5 text-[15px]">
         <li>
-          <a
-            class="prose-link"
-            href="https://github.com/umutozangorkem06"
-            target="_blank"
-            rel="noopener noreferrer">GitHub</a
+          <a class="prose-link" href={contact.github} target="_blank" rel="noopener noreferrer"
+            >GitHub</a
           >
         </li>
         <li>
-          <a
-            class="prose-link"
-            href="https://www.linkedin.com/in/umutozangorkem/"
-            target="_blank"
-            rel="noopener noreferrer">LinkedIn</a
-          >
-        </li>
-        <li>
-          <a class="prose-link" href="mailto:umutozangorkemcs@gmail.com"
-            >umutozangorkemcs@gmail.com</a
+          <a class="prose-link" href={contact.linkedin} target="_blank" rel="noopener noreferrer"
+            >LinkedIn</a
           >
         </li>
       </ul>
