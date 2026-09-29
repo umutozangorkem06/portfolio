@@ -5,36 +5,32 @@ export type ProjectLink = {
 
 export type Project = {
   id: string;
-  emoji: string;
   title: string;
   featured: boolean;
   summary: string;
   stack: readonly string[];
-  image: string;
   links: readonly ProjectLink[];
 };
 
 export const projects: readonly Project[] = [
   {
     id: "meetingbrief",
-    emoji: "📋",
     title: "MeetingBrief",
     featured: true,
     summary:
-      "AI-powered meeting-briefing SaaS. Analyzes your Google Calendar and auto-generates briefing reports on attendees and agenda. My own product — past the MVP stage, with an April 2026 feasibility report. Newspaper-style 'Editorial' theme.",
+      "AI-powered meeting-briefing SaaS. Connects to Google Calendar and generates briefing reports on attendees and agenda ahead of each meeting. My own product, now past the MVP stage.",
     stack: ["Next.js 14", "Supabase", "Clerk", "Stripe"],
-    image: "/projects/meetingbrief.png",
     links: [],
   },
   {
     id: "hychef",
-    emoji: "🍽️",
     title: "HyChef",
     featured: true,
     summary:
-      "Three-tier restaurant / food-safety SaaS. The mobile app handles weekly food diaries, temperature checks, and PDF reporting against the UK's SFBB (Safer Food, Better Business) and HACCP standards; the web side is the dashboard; the backend serves the API.",
+      "Three-tier food-safety SaaS for UK restaurants. A native Android app handles weekly food diaries, temperature checks, and PDF reporting against SFBB (Safer Food, Better Business) and HACCP standards, backed by a Laravel API and a Next.js dashboard.",
     stack: [
-      "Laravel 12 / PHP 8.2",
+      "Laravel 12",
+      "PHP 8.2",
       "Sanctum",
       "Stripe Cashier",
       "Next.js 15",
@@ -45,45 +41,42 @@ export const projects: readonly Project[] = [
       "Room",
       "Hilt",
     ],
-    image: "/projects/hychef.png",
     links: [],
   },
   {
     id: "anidate",
-    emoji: "🎴",
     title: "AniDate",
     featured: true,
     summary:
-      "Anime-themed dating / matching mobile app. Tinder-style card swiping, an anime catalogue from the Jikan API, and a quiz bank to drive matches.",
-    stack: ["React Native", "Expo", "Firebase/Firestore", "TypeScript", "NativeWind", "Zustand"],
-    image: "/projects/anidate.png",
+      "Anime-themed matching app. Tinder-style card swiping, an anime catalogue powered by the Jikan API, and a quiz bank that drives matches.",
+    stack: ["React Native", "Expo", "TypeScript", "Firebase / Firestore", "NativeWind", "Zustand"],
     links: [],
   },
   {
-    id: "ironpilgrimage",
-    emoji: "🚂",
-    title: "Iron Pilgrimage",
-    featured: false,
+    id: "ironpilgrim",
+    title: "Iron Pilgrim",
+    featured: true,
     summary:
-      "A top-down roguelike autoshooter where you pilot a growing war-train instead of a character. Builds form through a wagon-composition system: Attack Wagons fire automatically, Buff Wagons attach event-driven listeners, and specific buff pairs trigger hidden Resonance mutations that replace their listeners with a single, stronger combined effect. The core twist is physical growth as the risk model — every wagon raises damage but extends your hitbox and turning radius, so stronger equals less control. Pre-demo, Unity, three-person indie team targeting a Sector 0 → Sector 1 vertical slice for Steam.",
+      "A top-down roguelike autoshooter where you pilot a growing war-train instead of a character. Builds come from wagon composition: attack wagons fire automatically, buff wagons react to in-game events, and hidden buff pairings trigger Resonance mutations. Every wagon adds power but also lengthens your hitbox and turning radius, so strength costs control. Built in Unity by a three-person indie team.",
     stack: ["Unity", "C#"],
-    image: "/projects/ironpilgrimage.png",
-    links: [],
+    links: [
+      { label: "Steam", url: "https://store.steampowered.com/app/4960060/Iron_Pilgrim/" },
+    ],
   },
   // Reserved (deliberately excluded from the public portfolio; keep for later):
   // {
-  //   id: "indirici", emoji: "🎵", title: "Indirici (Spotify → MP3)", featured: false,
+  //   id: "indirici", title: "Indirici (Spotify → MP3)", featured: false,
   //   summary: "A batch Spotify-to-MP3 downloader (co-built with Eray Karakaşlı). Reads an exportify.net CSV and converts tracks to MP3 via yt-dlp + ffmpeg. Ships as a PyInstaller-compiled .exe.",
-  //   stack: ["Python", "Tkinter", "yt-dlp", "ffmpeg", "PyInstaller"], image: "/projects/indirici.png", links: [],
+  //   stack: ["Python", "Tkinter", "yt-dlp", "ffmpeg", "PyInstaller"], links: [],
   // },
   // {
-  //   id: "altamira", emoji: "🎨", title: "Altamira (Stitch Mockups)", featured: false,
+  //   id: "altamira", title: "Altamira (Stitch Mockups)", featured: false,
   //   summary: "UI mockup collection for the 'Altamira' art platform — 7 screens produced with Google Stitch. 'Editorial Noir & The Digital Gallery' design system documented. Not yet coded.",
-  //   stack: ["Design", "Google Stitch", "DESIGN.md"], image: "/projects/altamira.png", links: [],
+  //   stack: ["Design", "Google Stitch", "DESIGN.md"], links: [],
   // },
   // {
-  //   id: "rustbound", emoji: "🚂", title: "RustBound", featured: false,
+  //   id: "rustbound", title: "RustBound", featured: false,
   //   summary: "Promo / landing page for 'Rust Bound — A War-Train Roguelike'. Pure HTML+CSS+JS with a canvas particle background and multiple sections (hero, pillars, locomotives, wagons, enemies) in a steampunk aesthetic.",
-  //   stack: ["HTML", "CSS", "Vanilla JS", "Canvas"], image: "/projects/rustbound.png", links: [],
+  //   stack: ["HTML", "CSS", "Vanilla JS", "Canvas"], links: [],
   // },
 ];
