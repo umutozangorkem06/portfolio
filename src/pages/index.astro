@@ -1,6 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
+import ExternalLink from "../components/ExternalLink.astro";
 import { projects } from "../data/projects";
+import avatar from "../assets/avatar.jpg";
 
 const ordered = [...projects].sort(
   (a, b) => Number(b.featured) - Number(a.featured)
@@ -48,13 +51,15 @@ const year = new Date().getFullYear();
 <Base>
   <main class="mx-auto max-w-2xl px-6 py-20 sm:py-28">
     <header class="flex items-start gap-5 sm:gap-6">
-      <img
-        src="/avatar.jpg"
+      <Image
+        src={avatar}
         alt="Portrait of Umut Ozan Gorkem"
-        width="72"
-        height="72"
+        width={72}
+        height={72}
+        densities={[1, 2]}
+        format="webp"
         loading="eager"
-        decoding="async"
+        fetchpriority="high"
         class="h-16 w-16 shrink-0 rounded-full object-cover sm:h-[72px] sm:w-[72px]"
       />
       <div class="flex flex-col gap-1">
@@ -69,12 +74,8 @@ const year = new Date().getFullYear();
         </p>
         <nav aria-label="Contact" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[14px]">
           <a class="prose-link" href={`mailto:${contact.email}`}>Email</a>
-          <a class="prose-link" href={contact.github} target="_blank" rel="noopener noreferrer"
-            >GitHub</a
-          >
-          <a class="prose-link" href={contact.linkedin} target="_blank" rel="noopener noreferrer"
-            >LinkedIn</a
-          >
+          <ExternalLink href={contact.github}>GitHub</ExternalLink>
+          <ExternalLink href={contact.linkedin}>LinkedIn</ExternalLink>
         </nav>
       </div>
     </header>
@@ -135,14 +136,7 @@ const year = new Date().getFullYear();
                   {p.links.length > 0 && (
                     <div class="flex shrink-0 gap-3 text-[13px]">
                       {p.links.map((link) => (
-                        <a
-                          class="prose-link"
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {link.label}
-                        </a>
+                        <ExternalLink href={link.url}>{link.label}<span class="ml-1" aria-hidden="true">↗</span></ExternalLink>
                       ))}
                     </div>
                   )}
@@ -192,12 +186,8 @@ const year = new Date().getFullYear();
       <h2 id="outside-code" class={heading}>Outside code</h2>
       <p class="mt-5 text-[14px] leading-6 text-[color:var(--color-text-muted)]">
         I co-host
-        <a
-          class="prose-link"
-          href="https://open.spotify.com/show/7F2XVPOYK9E8hoZJtzPhzn"
-          target="_blank"
-          rel="noopener noreferrer"
-          >The Unthinkers</a
+        <ExternalLink href="https://open.spotify.com/show/7F2XVPOYK9E8hoZJtzPhzn"
+          >The Unthinkers</ExternalLink
         >, a philosophy podcast on existentialism and the philosophy of mind,
         and I play guitar, harmonica, and bağlama.
       </p>
@@ -211,16 +201,8 @@ const year = new Date().getFullYear();
         <a class="prose-link" href={`mailto:${contact.email}`}>{contact.email}</a>.
       </p>
       <ul class="mt-4 flex gap-5 text-[15px]">
-        <li>
-          <a class="prose-link" href={contact.github} target="_blank" rel="noopener noreferrer"
-            >GitHub</a
-          >
-        </li>
-        <li>
-          <a class="prose-link" href={contact.linkedin} target="_blank" rel="noopener noreferrer"
-            >LinkedIn</a
-          >
-        </li>
+        <li><ExternalLink href={contact.github}>GitHub</ExternalLink></li>
+        <li><ExternalLink href={contact.linkedin}>LinkedIn</ExternalLink></li>
       </ul>
     </section>
 

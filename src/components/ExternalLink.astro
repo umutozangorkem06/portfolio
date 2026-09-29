@@ -1,0 +1,12 @@
+---
+interface Props {
+  href: string;
+  class?: string;
+}
+
+const { href, class: className = "prose-link" } = Astro.props;
+---
+
+<a class={className} href={href} target="_blank" rel="noopener noreferrer"
+  ><slot /><span class="sr-only"> (opens in a new tab)</span></a
+>
