@@ -6,16 +6,41 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const {
-  title = "Umut Ozan Gorkem",
-  description = "Computer Science student at the University of South Wales. Working across AI, quantum computing, and robotics.",
+  title = "Umut Ozan Gorkem — Software Developer",
+  description = "Software developer and Computer Science student at the University of South Wales, building full-stack SaaS, mobile apps, and games.",
   image = "/og-image.png",
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImage = new URL(image, Astro.site).toString();
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Umut Ozan Gorkem",
+  url: Astro.site?.toString(),
+  image: new URL("/avatar.jpg", Astro.site).toString(),
+  jobTitle: "Software Developer",
+  email: "mailto:umutozangorkemcs@gmail.com",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Cardiff",
+    addressCountry: "GB",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "University of South Wales",
+  },
+  sameAs: [
+    "https://github.com/umutozangorkem06",
+    "https://www.linkedin.com/in/umutozangorkem/",
+  ],
+};
 ---
 
 <!doctype html>
@@ -23,18 +48,27 @@ const ogImage = new URL(image, Astro.site).toString();
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Umut Ozan Gorkem" />
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonicalURL} />
-    <link rel="icon" type="image/jpeg" href="/avatar.jpg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:site_name" content="Umut Ozan Gorkem" />
+    <meta property="og:locale" content="en_GB" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Umut Ozan Gorkem — Software Developer" />
+    <meta property="profile:first_name" content="Umut Ozan" />
+    <meta property="profile:last_name" content="Gorkem" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={canonicalURL} />
@@ -43,6 +77,10 @@ const ogImage = new URL(image, Astro.site).toString();
     <meta name="twitter:image" content={ogImage} />
 
     <meta name="theme-color" content="#0e0e10" />
+
+    {!noindex && (
+      <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+    )}
   </head>
   <body class="min-h-screen bg-[color:var(--color-bg)] text-[color:var(--color-text)]">
     <slot />
