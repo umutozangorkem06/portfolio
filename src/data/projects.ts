@@ -18,8 +18,8 @@ export const projects: readonly Project[] = [
     title: "3D Reconstruction on a Budget",
     featured: true,
     summary:
-      "Final-year project (Oct 2026 – May 2027). How far learned 3D reconstruction gets on cheap hardware: VGGT and Depth Anything V2 on self-captured scenes, from a free cloud GPU and a laptop CPU down to a Raspberry Pi 5 with a Hailo-8 accelerator. The cheaper depth maps are turned into point clouds and compared against the VGGT reconstruction on accuracy, speed and memory.",
-    stack: ["Python", "PyTorch", "VGGT", "Depth Anything V2", "Raspberry Pi"],
+      "Final-year project (Oct 2026 – May 2027). How far learned 3D reconstruction gets on cheap hardware: Depth Anything V2 and VGGT on self-captured scenes, measured on a free cloud GPU, a laptop CPU, a Jetson Nano and a Raspberry Pi 5 with a Hailo-8 accelerator. A 3D Gaussian Splatting reconstruction, trained from the VGGT cameras, is the quality reference that the cheaper results are compared against.",
+    stack: ["Python", "PyTorch", "VGGT", "gsplat", "Jetson", "Raspberry Pi"],
     links: [{ label: "GitHub", url: "https://github.com/umutozangorkem06/3d-on-a-budget" }],
   },
   {
