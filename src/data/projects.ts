@@ -18,9 +18,9 @@ export const projects: readonly Project[] = [
     title: "3D Reconstruction on a Budget",
     featured: true,
     summary:
-      "Final-year project (Oct 2026 – May 2027). Benchmarking 3D Gaussian Splatting against the feed-forward VGGT model on self-captured scenes, measuring reconstruction quality, latency and memory across three hardware tiers: cloud GPU, a 4 GB laptop GPU and CPU. Evaluates one low-cost optimisation (splat pruning, quantisation or input downscaling) on the most constrained tier, delivered with a reproducible evaluation harness.",
-    stack: ["Python", "PyTorch", "nerfstudio", "gsplat", "VGGT"],
-    links: [],
+      "Final-year project (Oct 2026 – May 2027). How far learned 3D reconstruction gets on cheap hardware: VGGT and Depth Anything V2 on self-captured scenes, from a free cloud GPU and a laptop CPU down to a Raspberry Pi 5 with a Hailo-8 accelerator. The cheaper depth maps are turned into point clouds and compared against the VGGT reconstruction on accuracy, speed and memory.",
+    stack: ["Python", "PyTorch", "VGGT", "Depth Anything V2", "Raspberry Pi"],
+    links: [{ label: "GitHub", url: "https://github.com/umutozangorkem06/3d-on-a-budget" }],
   },
   {
     id: "meetingbrief",
